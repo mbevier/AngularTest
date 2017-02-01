@@ -1,0 +1,22 @@
+﻿"resources": [
+  {
+    "name": "MSDeploy",
+    "type": "extensions",
+    "location": "[parameters('location')]",
+    "apiVersion": "2014-06-01",
+    "dependsOn": [
+      "[concat('Microsoft.Web/sites/', parameters('siteName'))]"
+    ],
+    "tags": {
+      "displayName": "ContentDeploy"
+    },
+    "properties": {
+      "packageUri": "[concat(parameters('packageUrl'), parameters('sasToken'))]",
+      "dbType": "None",
+      "connectionString": "",
+      "setParameters": {
+          "IIS Web Application Name": "[parameters('siteName')]"
+      }
+    }
+  }
+]
